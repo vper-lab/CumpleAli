@@ -7,7 +7,7 @@ let breathTimer;
 try { const saved = localStorage.getItem(storageKey); if (Object.hasOwn(names, saved)) choice = saved; } catch { storageAvailable = false; }
 
 function home() {
-  return `<section class="intro"><span class="eyebrow"><span class="tiny-star" aria-hidden="true">✦</span> HOY LA PROTAGONISTA ERES TÚ</span><span class="big-age" aria-hidden="true">38</span><h1>Alicia, hay regalos<br>que <em>se viven.</em></h1><p>Felices 38, hermana. Este año, el regalo es un recuerdo por estrenar. Y la mejor parte: tú eliges.</p></section>
+  return `<section class="intro"><span class="eyebrow"><span class="tiny-star" aria-hidden="true">✦</span> HOY LA PROTAGONISTA ERES TÚ</span><span class="big-age" aria-hidden="true">34</span><h1>Alicia, hay regalos<br>que <em>se viven.</em></h1><p>Felices 34, hermana. Este año, el regalo es un recuerdo por estrenar. Y la mejor parte: tú eliges.</p></section>
   <div class="choices"><a class="card water" href="#/flotacion"><div class="card-top"><span>PARA BAJAR LAS REVOLUCIONES</span><span class="card-number">01</span></div><h2>Que el mundo<br>espere un ratito.</h2><p>Una sesión de flotación. Agua, silencio y ese gustazo de no tener que hacer nada.</p><div class="card-bottom"><span class="pill">Modo desconexión</span><strong>Descubrir la flotación</strong></div></a>
   <a class="card paint" href="#/pintura"><div class="card-top"><span>PARA SOLTAR LA CREATIVIDAD</span><span class="card-number">02</span></div><h2>Un poco de arte.<br>Un brindis por ti.</h2><p>Pinta un cuadro y tómate una copa de vino. No hace falta talento: solo ganas de pasarlo bien.</p><div class="card-bottom"><span class="pill">Modo artista</span><strong>Descubrir pintura y vino</strong></div></a></div>
   <div class="after-cards"><p>Dos planes. Un regalo. <span>Todo el tiempo para decidir.</span></p></div>
@@ -40,7 +40,7 @@ function painting() {
 }
 function celebration() {
   if (!choice) return home();
-  return `<section class="success"><span class="eyebrow">EL PRÓXIMO RECUERDO YA TIENE PLAN</span><span class="success-mark" aria-hidden="true">✦</span><h1>¡Por ti,<br><em>Alicia!</em></h1><p>38 años merecen algo que se disfrute.<br>Y este ratito lleva tu nombre.</p><article class="ticket"><span class="eyebrow">UN REGALO PARA VIVIR · ALICIA 38</span><h2>${names[choice]}</h2><p>${choice === 'flotacion' ? 'Vale por una pausa, un poco de silencio y el placer de dejarte llevar.' : 'Vale por una tarde de colores, un brindis y una obra con tu firma.'}</p><div class="ticket-bottom"><span>De tu hermano Victor</span><strong>Con todo mi cariño</strong></div></article><p>${storageAvailable ? 'Tu elección está guardada en este navegador.' : 'Tu elección se mantiene mientras esta página siga abierta; este navegador no permite guardarla.'}<br>Cuéntaselo a Victor y elegid juntos el lugar y la fecha.</p><div class="actions"><button class="btn" id="celebrate-again">Otro poquito de confeti</button><a class="btn secondary" href="#/">Explorar o cambiar mi elección</a></div><p class="note">Este recuerdo es parte del regalo; no es un bono emitido por el centro ni una reserva.</p></section>`;
+  return `<section class="success"><span class="eyebrow">EL PRÓXIMO RECUERDO YA TIENE PLAN</span><span class="success-mark" aria-hidden="true">✦</span><h1>¡Por ti,<br><em>Alicia!</em></h1><p>34 años merecen algo que se disfrute.<br>Y este ratito lleva tu nombre.</p><article class="ticket"><span class="eyebrow">UN REGALO PARA VIVIR · ALICIA 34</span><h2>${names[choice]}</h2><p>${choice === 'flotacion' ? 'Vale por una pausa, un poco de silencio y el placer de dejarte llevar.' : 'Vale por una tarde de colores, un brindis y una obra con tu firma.'}</p><div class="ticket-bottom"><span>De tu hermano Victor</span><strong>Con todo mi cariño</strong></div></article><p>${storageAvailable ? 'Tu elección está guardada en este navegador.' : 'Tu elección se mantiene mientras esta página siga abierta; este navegador no permite guardarla.'}<br>Cuéntaselo a Victor y elegid juntos el lugar y la fecha.</p><div class="actions"><button class="btn" id="celebrate-again">Otro poquito de confeti</button><a class="btn secondary" href="#/">Explorar o cambiar mi elección</a></div><p class="note">Este recuerdo es parte del regalo; no es un bono emitido por el centro ni una reserva.</p></section>`;
 }
 function confetti() {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -78,7 +78,7 @@ function render(moveFocus=true) {
   const route = location.hash.slice(1) || '/';
   const views = {'/':home,'/flotacion':floating,'/pintura':painting,'/celebracion':celebration};
   main.innerHTML = (views[route] || home)();
-  document.title = `${route === '/flotacion' ? 'Tu sesión de flotación' : route === '/pintura' ? 'Pintura y vino' : route === '/celebracion' && choice ? 'Tu regalo elegido' : 'Alicia, esto va por ti'} · Alicia 38`;
+  document.title = `${route === '/flotacion' ? 'Tu sesión de flotación' : route === '/pintura' ? 'Pintura y vino' : route === '/celebracion' && choice ? 'Tu regalo elegido' : 'Alicia, esto va por ti'} · Alicia 34`;
   main.querySelectorAll('[data-choose]').forEach(b=>b.addEventListener('click',()=>{
     choice=b.dataset.choose;
     try { localStorage.setItem(storageKey,choice);storageAvailable=true; } catch { storageAvailable=false; }
